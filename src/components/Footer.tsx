@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, FileText } from "lucide-react";
+import { Phone, Mail, Clock } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t bg-card mt-auto">
       <div className="h-1 gradient-tricolor" />
@@ -10,29 +13,34 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-primary">E-Ration Shop Portal</h3>
+            <h3 className="font-bold text-lg mb-4 text-primary">{t.footer.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              A Digital India initiative for transparent and efficient distribution of essential commodities under the Public Distribution System.
+              {t.footer.description}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-primary">Quick Links</h3>
+            <h3 className="font-bold text-lg mb-4 text-primary">{t.footer.quickLinks}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/faq" className="text-muted-foreground hover:text-primary transition-smooth">
-                  FAQ
+                  {t.footer.faq}
                 </Link>
               </li>
               <li>
                 <Link to="/terms" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Terms & Conditions
+                  {t.footer.terms}
                 </Link>
               </li>
               <li>
                 <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Privacy Policy
+                  {t.footer.privacy}
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-smooth">
+                  {t.footer.contact}
                 </Link>
               </li>
             </ul>
@@ -40,27 +48,31 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-primary">Contact</h3>
+            <h3 className="font-bold text-lg mb-4 text-primary">{t.footer.contactTitle}</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 text-saffron" />
-                <span>Helpline: 1800-XXX-XXXX</span>
+                <span>{t.footer.helpline}</span>
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="w-4 h-4 text-saffron" />
+                <span>{t.footer.landline}</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4 text-saffron" />
-                <span>support@eration.gov.in</span>
+                <span>{t.footer.email}</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
-                <FileText className="w-4 h-4 text-saffron" />
-                <span>Mon-Fri: 9:00 AM - 6:00 PM</span>
+                <Clock className="w-4 h-4 text-saffron" />
+                <span>{t.footer.hours}</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>© 2025 Government of India. All rights reserved.</p>
-          <p className="mt-1">Powered by Digital India Initiative</p>
+          <p>{t.footer.copyright}</p>
+          <p className="mt-1">{t.footer.poweredBy}</p>
         </div>
       </div>
     </footer>

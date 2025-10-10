@@ -1,0 +1,35 @@
+{
+  "citizens": [
+    {
+      "email": "shyam@gmail.com",
+      "password": "shyam123",
+      "name": "ShyamSunder Reddy",
+      "aadhaar": "1234-5678-9012",
+      "role": "citizen"
+    },
+    {
+      "email": "harish@gmail.com",
+      "password": "harish123",
+      "name": "Nalla Harish",
+      "aadhaar": "9876-5432-1098",
+      "role": "citizen"
+    }
+  ],
+  "dealers": [
+    {
+      "email": "sami@gmail.com",
+      "password": "sami123",
+      "name": "Sheik Sami",
+      "shopId": "DLR-001",
+      "role": "dealer"
+    }
+  ],
+  "admins": [
+    {
+      "email": "admin@erationshop.gov.in",
+      "password": "admin123",
+      "name": "System Administrator",
+      "role": "admin"
+    }
+  ]
+}

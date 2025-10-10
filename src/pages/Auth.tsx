@@ -8,17 +8,80 @@ import { Label } from "@/components/ui/label";
 import { Users, Store, ShieldCheck, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { useLanguage } from "@/hooks/useLanguage";
+import usersData from "@/data/users.json";
 
 const Auth = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { t } = useLanguage();
   const userType = searchParams.get("type") || "citizen";
   const [activeTab, setActiveTab] = useState<"citizen" | "dealer" | "admin">(userType as any);
   const [mode, setMode] = useState<"login" | "register">("login");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    aadhaar: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(`${mode === "login" ? "Logged in" : "Registered"} successfully as ${activeTab}`);
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    if (mode === "register") {
+      // Password confirmation check
+      if (formData.password !== formData.confirmPassword) {
+        toast.error("Passwords do not match");
+        return;
+      }
+      
+      toast.success(`Registered successfully as ${activeTab}`);
+    } else {
+      // Login - check against demo users
+      let userFound = false;
+      let userRole = "";
+
+      if (activeTab === "citizen") {
+        const user = usersData.citizens.find(
+          u => u.email === formData.email && u.password === formData.password
+        );
+        if (user) {
+          userFound = true;
+          userRole = "citizen";
+        }
+      } else if (activeTab === "dealer") {
+        const user = usersData.dealers.find(
+          u => u.email === formData.email && u.password === formData.password
+        );
+        if (user) {
+          userFound = true;
+          userRole = "dealer";
+        }
+      } else if (activeTab === "admin") {
+        const user = usersData.admins.find(
+          u => u.email === formData.email && u.password === formData.password
+        );
+        if (user) {
+          userFound = true;
+          userRole = "admin";
+        }
+      }
+
+      if (!userFound) {
+        toast.error("Invalid email or password");
+        return;
+      }
+
+      toast.success(`Logged in successfully`);
+    }
     
     // Navigate to appropriate dashboard
     const routes = {
@@ -30,9 +93,9 @@ const Auth = () => {
   };
 
   const userTypes = [
-    { value: "citizen", label: "Citizen", icon: Users, color: "saffron" },
-    { value: "dealer", label: "Dealer", icon: Store, color: "primary" },
-    { value: "admin", label: "Admin", icon: ShieldCheck, color: "india-green" }
+    { value: "citizen", label: t.auth.citizen, icon: Users, color: "saffron" },
+    { value: "dealer", label: t.auth.dealer, icon: Store, color: "primary" },
+    { value: "admin", label: t.auth.admin, icon: ShieldCheck, color: "india-green" }
   ];
 
   return (
@@ -46,7 +109,7 @@ const Auth = () => {
       <div className="w-full max-w-md relative z-10 animate-scale-in">
         <Link to="/" className="inline-flex items-center text-white mb-6 hover:text-white/80 transition-smooth">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Home
+          {t.auth.backHome}
         </Link>
 
         <Card className="shadow-elevated">
@@ -54,8 +117,8 @@ const Auth = () => {
             <div className="w-16 h-16 bg-saffron rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-3xl font-bold text-white">अ</span>
             </div>
-            <CardTitle className="text-2xl">E-Ration Shop Portal</CardTitle>
-            <CardDescription>Government of India</CardDescription>
+            <CardTitle className="text-2xl">{t.auth.title}</CardTitle>
+            <CardDescription>{t.auth.government}</CardDescription>
           </CardHeader>
 
           <CardContent>
@@ -79,14 +142,14 @@ const Auth = () => {
                 onClick={() => setMode("login")}
                 className="flex-1"
               >
-                Login
+                {t.auth.login}
               </Button>
               <Button
                 variant={mode === "register" ? "default" : "outline"}
                 onClick={() => setMode("register")}
                 className="flex-1"
               >
-                Register
+                {t.auth.register}
               </Button>
             </div>
 
@@ -94,45 +157,86 @@ const Auth = () => {
               {mode === "register" && (
                 <>
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="Enter your full name" required />
+                    <Label htmlFor="name">{t.auth.fullName}</Label>
+                    <Input 
+                      id="name" 
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder={t.auth.enterName} 
+                      required 
+                    />
                   </div>
                   {activeTab === "citizen" && (
                     <div className="space-y-2">
-                      <Label htmlFor="aadhaar">Aadhaar Number</Label>
-                      <Input id="aadhaar" placeholder="XXXX-XXXX-XXXX" maxLength={14} required />
+                      <Label htmlFor="aadhaar">{t.auth.aadhaar}</Label>
+                      <Input 
+                        id="aadhaar" 
+                        value={formData.aadhaar}
+                        onChange={(e) => setFormData({ ...formData, aadhaar: e.target.value })}
+                        placeholder={t.auth.aadhaarPlaceholder} 
+                        maxLength={14} 
+                        required 
+                      />
                     </div>
                   )}
                 </>
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email / Mobile</Label>
-                <Input id="email" type="text" placeholder="Enter email or mobile" required />
+                <Label htmlFor="email">{t.auth.email}</Label>
+                <Input 
+                  id="email" 
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder={t.auth.enterEmail} 
+                  required 
+                />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" placeholder="Enter password" required />
+                <Label htmlFor="password">{t.auth.password}</Label>
+                <Input 
+                  id="password" 
+                  type="password" 
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  placeholder={t.auth.enterPassword} 
+                  required 
+                />
               </div>
+
+              {mode === "register" && (
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">{t.auth.confirmPassword}</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    type="password"
+                    value={formData.confirmPassword}
+                    onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                    placeholder={t.auth.confirmPassword} 
+                    required 
+                  />
+                </div>
+              )}
 
               {mode === "login" && (
                 <div className="text-right">
                   <Button variant="link" className="text-xs p-0 h-auto" type="button">
-                    Forgot Password?
+                    {t.auth.forgotPassword}
                   </Button>
                 </div>
               )}
 
               <Button type="submit" className="w-full bg-primary">
-                {mode === "login" ? "Login" : "Register"}
+                {mode === "login" ? t.auth.login : t.auth.register}
               </Button>
             </form>
           </CardContent>
         </Card>
 
         <p className="text-center text-white/80 text-xs mt-6">
-          By continuing, you agree to our Terms of Service and Privacy Policy
+          {t.auth.terms}
         </p>
       </div>
     </div>

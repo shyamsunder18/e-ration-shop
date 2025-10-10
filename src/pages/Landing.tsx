@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Store, ShieldCheck, TrendingUp, CheckCircle, FileText } from "lucide-react";
+import { Users, Store, ShieldCheck, CheckCircle, FileText, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Landing = () => {
+  const { t } = useLanguage();
   const userTypes = [
     {
       title: "Citizen Portal",
@@ -51,10 +53,10 @@ const Landing = () => {
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-            E-Ration Shop Portal
+            {t.landing.welcome}
           </h1>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-fade-in">
-            Transparent, Efficient, and Accessible Ration Distribution for Every Citizen
+            {t.landing.slogan}
           </p>
           <div className="flex flex-wrap gap-4 justify-center animate-fade-in">
             {features.map((feature, index) => {
