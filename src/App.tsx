@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
+import EnhancedAuth from "./pages/EnhancedAuth";
 import CitizenDashboard from "./pages/CitizenDashboard";
 import DealerDashboard from "./pages/DealerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -24,7 +25,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/auth" element={<EnhancedAuth />} />
           <Route path="/citizen-dashboard" element={<CitizenDashboard />} />
           <Route path="/dealer-dashboard" element={<DealerDashboard />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />

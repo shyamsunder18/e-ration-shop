@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import enTranslations from '@/i18n/en.json';
 import hiTranslations from '@/i18n/hi.json';
 import teTranslations from '@/i18n/te.json';
@@ -12,7 +12,7 @@ interface LanguageContextType {
   t: Translations;
 }
 
-const translations: Record<Language, Translations> = {
+const translations: Record<Language, any> = {
   en: enTranslations,
   hi: hiTranslations,
   te: teTranslations,
