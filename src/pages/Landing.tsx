@@ -10,22 +10,22 @@ const Landing = () => {
   const { t } = useLanguage();
   const userTypes = [
     {
-      title: "Citizen Portal",
-      description: "Check your ration entitlements, purchase history, and download receipts",
+      title: t.landing.citizenPortalTitle,
+      description: t.landing.citizenPortalDesc,
       icon: Users,
       route: "/auth?type=citizen",
       color: "saffron"
     },
     {
-      title: "Dealer Portal",
-      description: "Manage inventory, verify beneficiaries, and track distribution",
+      title: t.landing.dealerPortalTitle,
+      description: t.landing.dealerPortalDesc,
       icon: Store,
       route: "/auth?type=dealer",
       color: "primary"
     },
     {
-      title: "Admin Portal",
-      description: "Monitor system-wide operations, manage users, and generate reports",
+      title: t.landing.adminPortalTitle,
+      description: t.landing.adminPortalDesc,
       icon: ShieldCheck,
       route: "/auth?type=admin",
       color: "india-green"
@@ -33,10 +33,10 @@ const Landing = () => {
   ];
 
   const features = [
-    { icon: CheckCircle, text: "Real-time Quota Tracking" },
-    { icon: FileText, text: "Digital Receipt Generation" },
-    { icon: TrendingUp, text: "Transparent Distribution" },
-    { icon: ShieldCheck, text: "Secure & Authenticated" }
+    { icon: CheckCircle, text: t.landing.feature1 },
+    { icon: FileText, text: t.landing.feature2 },
+    { icon: TrendingUp, text: t.landing.feature3 },
+    { icon: ShieldCheck, text: t.landing.feature4 }
   ];
 
   return (
@@ -75,10 +75,10 @@ const Landing = () => {
       {/* Quick Access Section */}
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-4 text-primary">
-          Select Your Portal
+          {t.landing.selectPortal}
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Choose your role to access the appropriate dashboard and services
+          {t.landing.selectPortalDesc}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -98,7 +98,7 @@ const Landing = () => {
                   <p className="text-sm text-muted-foreground mb-6">{type.description}</p>
                   <Link to={type.route}>
                     <Button className={`w-full bg-${type.color} hover:bg-${type.color}/90`}>
-                      Access Portal
+                      {t.landing.accessPortal}
                     </Button>
                   </Link>
                 </CardContent>
@@ -112,14 +112,14 @@ const Landing = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-primary">
-            Why E-Ration Portal?
+            {t.landing.whyTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
-              { title: "Paperless Process", desc: "Complete digital workflow" },
-              { title: "Real-time Updates", desc: "Instant quota information" },
-              { title: "Secure Access", desc: "Government-grade security" },
-              { title: "24/7 Availability", desc: "Access anytime, anywhere" }
+              { title: t.landing.benefit1, desc: t.landing.benefit1Detail },
+              { title: t.landing.benefit2, desc: t.landing.benefit2Detail },
+              { title: t.landing.benefit3, desc: t.landing.benefit3Detail },
+              { title: t.landing.benefit4, desc: t.landing.benefit4Detail }
             ].map((benefit, index) => (
               <Card key={index} className="text-center shadow-card">
                 <CardContent className="p-6">

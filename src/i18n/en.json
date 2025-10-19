@@ -17,7 +17,29 @@
     "benefit2Title": "Efficiency",
     "benefit2Desc": "Faster processing and reduced waiting times",
     "benefit3Title": "Accessibility",
-    "benefit3Desc": "Access your ration details anytime, anywhere"
+    "benefit3Desc": "Access your ration details anytime, anywhere",
+    "citizenPortalTitle": "Citizen Portal",
+    "citizenPortalDesc": "Check your ration entitlements, purchase history, and download receipts",
+    "dealerPortalTitle": "Dealer Portal",
+    "dealerPortalDesc": "Manage inventory, verify beneficiaries, and track distribution",
+    "adminPortalTitle": "Admin Portal",
+    "adminPortalDesc": "Monitor system-wide operations, manage users, and generate reports",
+    "selectPortal": "Select Your Portal",
+    "selectPortalDesc": "Choose your role to access the appropriate dashboard and services",
+    "accessPortal": "Access Portal",
+    "whyTitle": "Why E-Ration Portal?",
+    "feature1": "Real-time Quota Tracking",
+    "feature2": "Digital Receipt Generation",
+    "feature3": "Transparent Distribution",
+    "feature4": "Secure & Authenticated",
+    "benefit1": "Paperless Process",
+    "benefit1Detail": "Complete digital workflow",
+    "benefit2": "Real-time Updates",
+    "benefit2Detail": "Instant quota information",
+    "benefit3": "Secure Access",
+    "benefit3Detail": "Government-grade security",
+    "benefit4": "24/7 Availability",
+    "benefit4Detail": "Access anytime, anywhere"
   },
   "auth": {
     "title": "E-Ration Shop Portal",
@@ -61,7 +83,9 @@
     "officeLocation": "Office Location",
     "enterOfficeLocation": "Enter office location",
     "contactNo": "Contact Number",
-    "enterContactNo": "Enter contact number"
+    "enterContactNo": "Enter contact number",
+    "mobile": "Mobile Number",
+    "enterMobile": "Enter your 10-digit mobile number"
   },
   "dashboard": {
     "home": "Home",

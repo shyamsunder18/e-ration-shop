@@ -29,6 +29,7 @@ const EnhancedAuth = () => {
     district: "",
     state: "",
     familyMembers: "",
+    mobile: "",
     pan: "",
     fpsLicense: "",
     shopAddress: "",
@@ -49,6 +50,10 @@ const EnhancedAuth = () => {
 
   const validatePAN = (pan: string) => {
     return /^[A-Z]{5}\d{4}[A-Z]{1}$/.test(pan);
+  };
+
+  const validateMobile = (mobile: string) => {
+    return /^\d{10}$/.test(mobile);
   };
 
   const validatePassword = (password: string, isAdmin: boolean) => {
@@ -106,6 +111,26 @@ const EnhancedAuth = () => {
         return;
       }
 
+      // Mobile validation for citizens
+      if (activeTab === "citizen" && formData.mobile && !validateMobile(formData.mobile)) {
+        toast.error("Mobile number must be exactly 10 digits");
+        return;
+      }
+
+      // Contact validation for dealers
+      if (activeTab === "dealer" && formData.contactNo && !validateMobile(formData.contactNo)) {
+        toast.error("Contact number must be exactly 10 digits");
+        return;
+      }
+
+      // Save to localStorage for demo purposes
+      const registrationData = {
+        ...formData,
+        role: activeTab,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem('lastRegistration', JSON.stringify(registrationData));
+
       toast.success(`Registration submitted successfully! Pending admin approval.`);
       setTimeout(() => navigate("/"), 1500);
     } else {
@@ -150,6 +175,17 @@ const EnhancedAuth = () => {
       if (!userFound) {
         toast.error("Invalid email or password");
         return;
+      }
+
+      // Store user session
+      const currentUser = activeTab === "citizen" 
+        ? [...usersData.citizens].find((u: any) => u.email === formData.email)
+        : activeTab === "dealer"
+        ? [...usersData.dealers].find((u: any) => u.email === formData.email)
+        : usersData.admins.find((u: any) => u.email === formData.email);
+
+      if (currentUser) {
+        sessionStorage.setItem('currentUser', JSON.stringify({ ...currentUser, role: userRole }));
       }
 
       toast.success(`Logged in successfully`);
@@ -305,6 +341,16 @@ const EnhancedAuth = () => {
                           required 
                         />
                       </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="mobile">{t.auth.mobile}</Label>
+                        <Input 
+                          id="mobile" 
+                          value={formData.mobile}
+                          onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+                          placeholder={t.auth.enterMobile} 
+                          required 
+                        />
+                      </div>
                     </>
                   )}
 
@@ -372,6 +418,16 @@ const EnhancedAuth = () => {
                             required 
                           />
                         </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="contactNo">{t.auth.contactNo}</Label>
+                        <Input 
+                          id="contactNo" 
+                          value={formData.contactNo}
+                          onChange={(e) => setFormData({ ...formData, contactNo: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+                          placeholder={t.auth.enterContactNo} 
+                          required 
+                        />
                       </div>
                     </>
                   )}
