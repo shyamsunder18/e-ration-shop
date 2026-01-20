@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 100% 15%;
 
-    /* Deep Blue - Primary Government Color */
-    --primary: 210 100% 20%;
+    /* Deep Maroon - Primary Government Color */
+    --primary: 350 70% 30%;
     --primary-foreground: 0 0% 100%;
 
     /* Saffron Accent */
@@ -30,11 +30,11 @@ All colors MUST be HSL.
     --india-green: 140 100% 28%;
     --india-green-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 210 100% 20%;
+    --secondary: 350 30% 96%;
+    --secondary-foreground: 350 70% 30%;
 
-    --muted: 210 30% 94%;
-    --muted-foreground: 210 20% 45%;
+    --muted: 350 20% 94%;
+    --muted-foreground: 350 15% 45%;
 
     --accent: 27 100% 60%;
     --accent-foreground: 0 0% 100%;
@@ -42,17 +42,17 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 210 100% 20%;
+    --border: 350 15% 88%;
+    --input: 350 15% 88%;
+    --ring: 350 70% 30%;
 
     --radius: 0.75rem;
     
     /* Custom Government Design Tokens */
     --gradient-tricolor: linear-gradient(180deg, hsl(27 100% 60%) 0%, hsl(0 0% 100%) 33%, hsl(140 100% 28%) 100%);
-    --gradient-header: linear-gradient(135deg, hsl(210 100% 20%) 0%, hsl(210 100% 30%) 100%);
-    --shadow-card: 0 2px 8px -2px hsl(210 100% 20% / 0.08);
-    --shadow-elevated: 0 4px 16px -4px hsl(210 100% 20% / 0.12);
+    --gradient-header: linear-gradient(135deg, hsl(350 70% 30%) 0%, hsl(350 65% 40%) 100%);
+    --shadow-card: 0 2px 8px -2px hsl(350 70% 30% / 0.08);
+    --shadow-elevated: 0 4px 16px -4px hsl(350 70% 30% / 0.12);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -82,7 +82,7 @@ All colors MUST be HSL.
     --popover: 210 100% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 210 100% 40%;
+    --primary: 350 65% 45%;
     --primary-foreground: 0 0% 100%;
 
     --saffron: 27 100% 55%;
@@ -91,11 +91,11 @@ All colors MUST be HSL.
     --india-green: 140 100% 35%;
     --india-green-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 15%;
+    --secondary: 350 30% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 15%;
-    --muted-foreground: 210 20% 65%;
+    --muted: 350 30% 15%;
+    --muted-foreground: 350 15% 65%;
 
     --accent: 27 100% 55%;
     --accent-foreground: 0 0% 100%;
@@ -103,11 +103,11 @@ All colors MUST be HSL.
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 40% 20%;
-    --input: 210 40% 20%;
-    --ring: 210 100% 50%;
+    --border: 350 30% 20%;
+    --input: 350 30% 20%;
+    --ring: 350 65% 50%;
     
-    --gradient-header: linear-gradient(135deg, hsl(210 100% 25%) 0%, hsl(210 100% 35%) 100%);
+    --gradient-header: linear-gradient(135deg, hsl(350 65% 35%) 0%, hsl(350 60% 45%) 100%);
     --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.3);
     --shadow-elevated: 0 4px 16px -4px hsl(0 0% 0% / 0.4);
     --sidebar-background: 240 5.9% 10%;
