@@ -11,7 +11,7 @@ const handler = async (req: any, res: any) => {
   try {
     if (!isConnected) {
       await connectDB();
-      await seedAdmin();
+      //await seedAdmin();
       isConnected = true;
       console.log("✅ DB Connected & Admin Seeded");
     }
