@@ -1,23 +1,26 @@
 import dotenv from 'dotenv';
 dotenv.config();
+
 import app from './app';
 import connectDB from './config/db';
 import seedAdmin from './seeder';
 
-const PORT = Number(process.env.PORT) || 5000;
+let isConnected = false;
 
-const startServer = async () => {
-    try {
-        await connectDB();
-        await seedAdmin();
-
-        app.listen(PORT, '0.0.0.0', () => {
-            console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-        });
-    } catch (error: any) {
-        console.error(`Failed to start server: ${error?.message || error}`);
-        process.exit(1);
+const handler = async (req: any, res: any) => {
+  try {
+    if (!isConnected) {
+      await connectDB();
+      await seedAdmin();
+      isConnected = true;
+      console.log("✅ DB Connected & Admin Seeded");
     }
+
+    return app(req, res); // pass request to express app
+  } catch (error: any) {
+    console.error("❌ Error:", error?.message || error);
+    res.status(500).send("Server Error");
+  }
 };
 
-startServer();
+export default handler;
