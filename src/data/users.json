@@ -1,0 +1,85 @@
+{
+  "citizens": [
+    {
+      "email": "shyam@gmail.com",
+      "password": "shyam123",
+      "name": "ShyamSunder Reddy",
+      "aadhaar": "123456789012",
+      "rationCardNo": "AP-HYD-2024-001234",
+      "address": "MIG-45, KPHB Colony, Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "familyMembers": 4,
+      "role": "citizen",
+      "status": "approved"
+    },
+    {
+      "email": "harish@gmail.com",
+      "password": "harish123",
+      "name": "Nalla Harish",
+      "aadhaar": "987654321098",
+      "rationCardNo": "AP-HYD-2024-005678",
+      "address": "Plot 78, Madhapur, Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "familyMembers": 3,
+      "role": "citizen",
+      "status": "approved"
+    }
+  ],
+  "dealers": [
+    {
+      "email": "sami@gmail.com",
+      "password": "sami123",
+      "name": "Sheik Sami",
+      "aadhaar": "456789123456",
+      "pan": "ABCDE1234F",
+      "fpsLicense": "FPS-HYD-2023-089",
+      "shopAddress": "Shop No. 12, Mehdipatnam, Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "role": "dealer",
+      "status": "approved"
+    }
+  ],
+  "admins": [
+    {
+      "email": "admin@erationshop.gov.in",
+      "password": "admin123",
+      "name": "System Administrator",
+      "department": "Civil Supplies",
+      "employeeId": "EMP-2024-001",
+      "officeLocation": "Secretariat, Hyderabad",
+      "contactNo": "040-23546789",
+      "role": "admin"
+    }
+  ],
+  "pending": [
+    {
+      "email": "priya@gmail.com",
+      "password": "priya123",
+      "name": "Priya Sharma",
+      "aadhaar": "234567891234",
+      "rationCardNo": "AP-HYD-2024-009876",
+      "address": "Flat 201, Gachibowli, Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "familyMembers": 5,
+      "role": "citizen",
+      "status": "pending"
+    },
+    {
+      "email": "dealer2@gmail.com",
+      "password": "dealer123",
+      "name": "shyam sunder",
+      "aadhaar": "345678912345",
+      "pan": "FGHIJ5678K",
+      "fpsLicense": "FPS-HYD-2024-102",
+      "shopAddress": "Shop No. 45, Ameerpet, Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "role": "dealer",
+      "status": "pending"
+    }
+  ]
+}

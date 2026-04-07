@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Monthly Distribution Started",
+    "message": "October 2025 distribution has started. Please collect your ration before the 25th.",
+    "role": "Citizen",
+    "timestamp": "2025-10-01T10:00:00Z",
+    "read": false
+  },
+  {
+    "id": 2,
+    "title": "Stock Update Reminder",
+    "message": "All dealers must update their stock inventory by the 10th of this month.",
+    "role": "Dealer",
+    "timestamp": "2025-10-03T09:00:00Z",
+    "read": false
+  },
+  {
+    "id": 3,
+    "title": "System Maintenance",
+    "message": "Portal will be offline on 15th October from 2:00 PM to 4:00 PM for maintenance.",
+    "role": "All",
+    "timestamp": "2025-10-05T08:00:00Z",
+    "read": false
+  },
+  {
+    "id": 4,
+    "title": "New Subsidy Scheme",
+    "message": "Government has announced additional subsidy for APL cardholders. Check your dashboard for details.",
+    "role": "Citizen",
+    "timestamp": "2025-10-07T11:30:00Z",
+    "read": false
+  },
+  {
+    "id": 5,
+    "title": "Quality Standards Update",
+    "message": "New quality standards for rice and wheat distribution effective from next month.",
+    "role": "Dealer",
+    "timestamp": "2025-10-08T14:00:00Z",
+    "read": false
+  }
+]

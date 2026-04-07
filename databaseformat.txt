@@ -1,0 +1,77 @@
+// User Collection (single collection for citizen, dealer, and admin)
+{
+  name: String,
+  email: String,
+  password: String,
+  role: { type: String, enum: ["USER", "VENDOR", "ADMIN"], default: "USER" },
+  status: { type: String, enum: ["PENDING", "APPROVED", "REJECTED", "SUSPENDED"], default: "PENDING" },
+
+  // Citizen fields
+  aadhaar: String,
+  rationCardNumber: String,
+  mobileNumber: String,
+  address: String,
+  district: String,
+  state: String,
+  familyMembers: Number,
+  cardCategory: { type: String, enum: ["AAY", "BPL", "APL", "PHH"] },
+  assignedVendor: ObjectId,
+
+  // Dealer fields
+  shopName: String,
+  licenseNumber: String,
+
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// Ration Card Collection
+{
+  user: ObjectId,
+  headOfFamilyName: String,
+  rationCardNumber: String,
+  aadhaarNumber: String,
+  cardType: { type: String, enum: ["AAY", "BPL", "APL", "PHH"] },
+  numberOfFamilyMembers: Number,
+  addressLine: String,
+  district: String,
+  state: String,
+  members: [
+    {
+      name: String,
+      age: Number,
+      relationshipToHead: String,
+      aadhaarNumber: String,
+      biometricReference: String
+    }
+  ],
+  createdAt: Date,
+  updatedAt: Date
+}
+
+// Ration Registry Collection
+{
+  rationCardNumber: String,
+  dist: String,
+  headOfFamilyName: String,
+  headAadhaarNumber: String,
+  cardType: { type: String, enum: ["AAY", "BPL", "APL", "PHH"] },
+  addressLine: String,
+  district: String,
+  state: String,
+  dealerAssigned: String,
+  riceQuota: Number,
+  sugarQuota: Number,
+  wheatQuota: Number,
+  members: [
+    {
+      name: String,
+      age: Number,
+      relationshipToHead: String,
+      aadhaarNumber: String,
+      biometricReference: String
+    }
+  ],
+  createdAt: Date,
+  updatedAt: Date
+}
